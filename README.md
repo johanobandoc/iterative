@@ -1,7 +1,7 @@
-# Iterative Architectures
+# PRE
 
 This repository contains code for the PRE experiments.
 
-- `PRE/`: next-token prediction experiments and recurrent transformer variants.
+- `PRE_fineweb/`: next-token prediction experiments and recurrent transformer variants.
 
-To run the PRE code, enter the `PRE/` directory and follow `PRE/README.md`.
+To run the PRE code, enter the `PRE_fineweb/` directory and follow `PRE_fineweb/README.md`.
