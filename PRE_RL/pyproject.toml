@@ -1,0 +1,27 @@
+[project]
+name = "pre-rl"
+version = "0.1.0"
+description = "JAX reinforcement-learning experiments for Parallel Recurrent Experts."
+readme = "README.md"
+requires-python = ">=3.10,<3.12"
+dependencies = [
+    "craftax>=1.5.0,<2",
+    "flax>=0.10.2,<0.10.3",
+    "jax>=0.4.35,<0.5",
+    "jumanji>=1.1.1,<2",
+    "matplotlib>=3.8,<4",
+    "numpy>=1.26,<3",
+    "optax>=0.2.3,<0.3",
+    "tensorboard>=2.15,<3",
+    "tensorboardx>=2.6,<3",
+    "tyro>=0.8,<1",
+    "wandb>=0.17,<1",
+]
+
+[project.optional-dependencies]
+cuda12 = [
+    "jax[cuda12]>=0.4.35,<0.5",
+]
+
+[tool.uv]
+package = false
