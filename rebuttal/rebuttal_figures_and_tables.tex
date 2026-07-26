@@ -1,0 +1,313 @@
+\documentclass[10pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[margin=0.65in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{longtable}
+\usepackage{microtype}
+
+\graphicspath{{figures/}}
+\captionsetup{
+  font=small,
+  labelfont=bf,
+  hypcap=false,
+  justification=raggedright,
+  singlelinecheck=false
+}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4em}
+\setlength{\LTcapwidth}{0.96\textwidth}
+\renewcommand{\arraystretch}{1.08}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries Rebuttal Figures and Tables}
+\end{center}
+\vspace{0.5em}
+
+\setcounter{figure}{1}
+\begin{center}
+  \includegraphics[width=0.98\textwidth]{recurrent_state_sokoban_fineweb.pdf}
+\end{center}
+\captionof{figure}{
+\textbf{Carried state supplies a serial computation axis.}
+\textbf{Left}: In Sokoban, solid lines carry hidden state across environment steps and dashed lines reset it every step. Resetting state severely hurts shallow updates, while extra within-step depth partially recovers performance; color denotes within-step depth \(L\).
+\textbf{Right}: In FineWeb next-token prediction, the PRE Recurrent Transformer carries latent recurrent state across token steps, while the PRE Transformer recreates latent state from the current segment at each step. The context window size is \(128\) for both architectures.
+}
+\clearpage
+
+\setcounter{figure}{4}
+\begin{center}
+  \includegraphics[width=0.92\textwidth]{fixed_compute_retained_improvement.pdf}
+\end{center}
+\captionof{figure}{
+\textbf{Retained improvement under different depth caps.}
+Each bar reports the retained-improvement ratio \(\rho_{\leq k}\) for one matched-budget sweep under depth caps \(k \in \{1,2,4,8\}\), with \(Q\) defined as episodic return for Sokoban and Craftax and negative validation cross-entropy for FineWeb.
+Horizontal reference lines mark \(\rho=1.00\), which matches the unrestricted best configuration, and \(\rho=0.90\), which retains \(90\%\) of the best improvement over the domain reference.
+}
+\clearpage
+
+\setcounter{table}{0}
+\captionof{table}{
+\textbf{Best observed performance under within-step depth restrictions in the fixed-compute sweeps.}
+Sokoban and Craftax report episodic return, where higher is better. FineWeb next-token prediction reports validation loss, where lower is better. Gap reports the performance loss from the unrestricted optimum: return drop for Sokoban and Craftax, and validation-loss increase for FineWeb. Max \(L\) is the largest within-step depth included in that sweep.
+}
+\begin{center}
+\small
+\setlength{\tabcolsep}{4.5pt}
+\begin{tabular}{llcccccc}
+  \toprule
+  Domain & Budget & Max \(L\) & Best overall & Best with \(L \leq 2\) & Gap & Best with \(L \leq 1\) & Gap \\
+  \midrule
+  Sokoban & small & 8 & 13.659 & 13.613 & 0.046 & 13.351 & 0.308 \\
+  Sokoban & medium & 8 & 14.008 & 13.905 & 0.103 & 13.751 & 0.257 \\
+  Sokoban & large & 8 & 14.228 & 14.099 & 0.129 & 14.013 & 0.215 \\
+  Craftax & small & 8 & 32.436 & 32.436 & 0.000 & 32.436 & 0.000 \\
+  Craftax & medium & 8 & 33.934 & 33.934 & 0.000 & 33.802 & 0.132 \\
+  Craftax & large & 4 & 35.200 & 35.200 & 0.000 & 35.179 & 0.021 \\
+  FineWeb & small & 8 & 3.481 & 3.481 & 0.000 & 3.559 & 0.078 \\
+  FineWeb & medium & 8 & 3.434 & 3.441 & 0.007 & 3.511 & 0.078 \\
+  \bottomrule
+\end{tabular}
+\end{center}
+\clearpage
+
+\setcounter{figure}{8}
+\begin{center}
+  \includegraphics[width=0.78\textwidth]{appendix_fixed_compute_budgets_equal_panels.pdf}
+\end{center}
+\captionof{figure}{
+Additional fixed-compute allocation budgets.
+\textbf{Top left}: Sokoban small budget.
+\textbf{Top right}: Sokoban large budget.
+\textbf{Middle left}: Craftax small budget.
+\textbf{Middle right}: Craftax medium budget.
+\textbf{Bottom}: FineWeb small budget.
+In Sokoban and Craftax, panels vary expert hidden dimension, experts per within-step depth level, and within-step depth; color shows mean return, and only completed or near-completed configurations are shown. In FineWeb, color shows validation loss at the common comparison point of 1.30B consumed tokens, where lower is better.
+}
+\clearpage
+
+\setcounter{table}{1}
+\captionof{table}{
+\textbf{Fixed-compute budgets.}
+Relative work is normalized to the smallest budget within each domain. For Sokoban, \(C(d) \propto d(d+16)\); for Craftax, \(C(d) \propto d(256+2d)\). Best reports the best observed performance in the matched-budget sweep: return for Sokoban and Craftax, and validation loss for FineWeb.
+}
+\begin{center}
+\small
+\setlength{\tabcolsep}{3.8pt}
+\begin{tabular}{@{}lllcc@{}}
+  \toprule
+  Domain & Budget & Reference config & Work / small budget & Best \\
+  \midrule
+  Sokoban & small & \(L=1\), \(E=1\), \(d=128\) & \(1.00\) & \(13.659\) \\
+  Sokoban & medium & \(L=1\), \(E=1\), \(d=256\) & \(3.78\) & \(14.008\) \\
+  Sokoban & large & \(L=1\), \(E=1\), \(d=1024\) & \(57.78\) & \(14.228\) \\
+  Craftax & small & \(L=1\), \(E=1\), \(d=128\) & \(1.00\) & \(32.436\) \\
+  Craftax & medium & \(L=1\), \(E=1\), \(d=256\) & \(3.00\) & \(33.934\) \\
+  Craftax & large & \(L=1\), \(E=1\), \(d=1024\) & \(36.00\) & \(35.200\) \\
+  FineWeb & small & \(L=16, E=1\), \(d=768\) & \(1.00\) & \(3.481\) \\
+  FineWeb & medium & \(L=32, E=1\), \(d=768\) & \(2.00\) & \(3.434\) \\
+  \bottomrule
+\end{tabular}
+\end{center}
+\clearpage
+
+\setcounter{table}{2}
+\captionof{table}{
+\textbf{Best exact-depth comparison, \(L=4\) versus \(L=2\).}
+For each depth, the configuration with the best observed mean higher-is-better score \(Q\) is selected. \(\Delta Q\) is the observed difference between sample means \(\bar Q_4-\bar Q_2\), so positive values favor \(L=4\). The \(p\)-value is from Welch's \(t\)-test of \(H_0:\mathbb{E}[Q_4]\leq\mathbb{E}[Q_2]\) against \(H_1:\mathbb{E}[Q_4]>\mathbb{E}[Q_2]\). \(n\) is the number of independent runs per configuration.
+}
+\begin{center}
+\small
+\setlength{\tabcolsep}{4.0pt}
+\begin{tabular}{@{}llllrrr@{}}
+  \toprule
+  Domain & Budget & Best \(L=4\) & Best \(L=2\) & \(\Delta Q\) & \(n\) & \(p\) \\
+  \midrule
+  Sokoban & small & \(E=1,d=64\) & \(E=2,d=64\) & 0.046 & 3 & 0.2947 \\
+  Sokoban & medium & \(E=1,d=128\) & \(E=2,d=128\) & 0.102 & 3 & 0.0657 \\
+  Sokoban & large & \(E=14,d=128\) & \(E=2,d=512\) & 0.074 & 3 & 0.1005 \\
+  Craftax & small & \(E=4,d=16\) & \(E=3,d=32\) & 0.063 & 3 & 0.4407 \\
+  Craftax & medium & \(E=2,d=64\) & \(E=4,d=64\) & -0.690 & 3 & 0.9275 \\
+  Craftax & large & \(E=24,d=64\) & \(E=48,d=64\) & -0.266 & 3 & 0.8364 \\
+  \bottomrule
+\end{tabular}
+\end{center}
+\clearpage
+
+\setcounter{table}{3}
+\captionof{table}{
+\textbf{Best exact-depth comparison, \(L=2\) versus \(L=1\).}
+For each depth, the configuration with the best observed mean higher-is-better score \(Q\) is selected. \(\Delta Q\) is the observed difference between sample means \(\bar Q_2-\bar Q_1\), so positive values favor \(L=2\). The \(p\)-value is from Welch's \(t\)-test of \(H_0:\mathbb{E}[Q_2]\leq\mathbb{E}[Q_1]\) against \(H_1:\mathbb{E}[Q_2]>\mathbb{E}[Q_1]\). \(n\) is the number of independent runs per configuration.
+}
+\begin{center}
+\small
+\setlength{\tabcolsep}{4.0pt}
+\begin{tabular}{@{}llllrrr@{}}
+  \toprule
+  Domain & Budget & Best \(L=2\) & Best \(L=1\) & \(\Delta Q\) & \(n\) & \(p\) \\
+  \midrule
+  Sokoban & small & \(E=2,d=64\) & \(E=4,d=64\) & 0.262 & 3 & 0.0460 \\
+  Sokoban & medium & \(E=2,d=128\) & \(E=4,d=128\) & 0.154 & 3 & 0.0485 \\
+  Sokoban & large & \(E=2,d=512\) & \(E=15,d=256\) & 0.086 & 3 & 0.0745 \\
+  Craftax & small & \(E=3,d=32\) & \(E=3,d=64\) & -0.670 & 3 & 0.8968 \\
+  Craftax & medium & \(E=4,d=64\) & \(E=8,d=64\) & 0.132 & 3 & 0.3551 \\
+  Craftax & large & \(E=48,d=64\) & \(E=96,d=64\) & 0.021 & 3 & 0.4545 \\
+  \bottomrule
+\end{tabular}
+\end{center}
+\clearpage
+
+\setcounter{table}{4}
+\captionof{table}{
+\textbf{Best \(L=2\) versus all \(L=1\) configurations in Sokoban.}
+For each small and medium budget, the \(L=2\) configuration with the best observed mean return is compared with every \(L=1\) configuration. Positive \(\Delta Q\) favors \(L=2\), and \(p\) is from the one-sided Welch test defined above. \(n\) is the number of independent runs per configuration.
+}
+\begin{center}
+\small
+\setlength{\tabcolsep}{5.0pt}
+\begin{tabular}{@{}lllrrr@{}}
+  \toprule
+  Budget & Best \(L=2\) & \(L=1\) configuration & \(\Delta Q\) & \(n\) & \(p\) \\
+  \midrule
+  small & \(E=2,d=64\) & \(E=4,d=64\) & 0.262 & 3 & 0.0460 \\
+  small & \(E=2,d=64\) & \(E=1,d=128\) & 0.529 & 3 & 0.0141 \\
+  small & \(E=2,d=64\) & \(E=36,d=16\) & 0.647 & 3 & 0.0029 \\
+  small & \(E=2,d=64\) & \(E=12,d=32\) & 0.749 & 3 & 0.0003 \\
+  medium & \(E=2,d=128\) & \(E=4,d=128\) & 0.154 & 3 & 0.0485 \\
+  medium & \(E=2,d=128\) & \(E=1,d=256\) & 0.206 & 3 & 0.0093 \\
+  medium & \(E=2,d=128\) & \(E=14,d=64\) & 0.248 & 3 & 0.0109 \\
+  medium & \(E=2,d=128\) & \(E=45,d=32\) & 0.543 & 3 & 0.0004 \\
+  medium & \(E=2,d=128\) & \(E=136,d=16\) & 0.796 & 3 & 0.0007 \\
+  \bottomrule
+\end{tabular}
+\end{center}
+\clearpage
+
+\setcounter{table}{5}
+\input{tables/fixed_compute_seed_tables}
+\clearpage
+
+\setcounter{figure}{11}
+\begin{center}
+  \includegraphics[width=0.98\textwidth]{language_model_recmoe_vs_gptmoe_budget16_2048.pdf}
+\end{center}
+\captionof{figure}{
+FineWeb budget-16 comparison at long context.
+\textbf{Left}: completed finite PRE Recurrent Transformer runs with recurrent memory length 2048 and segment length of 64.
+\textbf{Right}: the corresponding non-recurrent GPT-style PRE Transformer fixed-budget sweep with training segment length 2048.
+Color and point labels show validation loss at the latest common logged validation point within each panel, where lower is better; marker shape denotes within-step depth \(L\), and stars mark the best configurations within each panel. The PRE Recurrent Transformer panel contains the subset of memory-2048 configurations that completed with finite validation loss, while the GPT-style PRE Transformer panel contains the completed segment-2048 sweep.
+}
+\clearpage
+
+\setcounter{figure}{12}
+\begin{center}
+  \includegraphics[width=0.98\textwidth]{language_model_recmoe_vs_gptmoe_budget16_128.pdf}
+\end{center}
+\captionof{figure}{
+FineWeb budget-16 comparison at context length 128.
+\textbf{Left}: the PRE Recurrent Transformer small-budget allocation map, repeated here for direct comparison. The segment length is 64 and the memory length is 128.
+\textbf{Right}: a non-recurrent GPT-style PRE Transformer sweep with training segment length 128 and the same nominal budget.
+Color and point labels show validation loss at the latest common logged validation point within each panel, where lower is better; marker shape denotes within-step depth \(L\), and stars mark the best configurations within each panel.
+}
+\clearpage
+
+\begin{center}
+  \includegraphics[width=0.98\textwidth]{fineweb_small_medium_large_budget_sandwich_depthshared.pdf}
+\end{center}
+\captionof*{figure}{
+\textbf{Async-paper Figure 2. FineWeb fixed-recurrent-compute allocation across three budgets.}
+\textbf{Left:} small budget, with all 14 configurations complete.
+\textbf{Middle:} medium budget, twice the small-sweep recurrent compute, with all 16 configurations complete.
+\textbf{Right:} large budget, eight times the small-sweep recurrent compute, with 24 of 30 configurations complete, including completed low-expert and depth-16 extensions.
+All panels share one validation-loss color scale. Colored points and labels report the final validation checkpoint near 1.295B consumed tokens; all but one use W\&B step 4{,}940, while the lower-PDB \(D=1,E=2,W=6144\) run uses its nearest checkpoint at step 4{,}953. Hollow points mark planned configurations that had not completed when this snapshot was generated.
+Circles, squares, triangles, filled-plus markers, and crosses denote \(D=1,2,4,8,16\), respectively; a star marks the best completed configuration in each panel. Lower loss is better. All runs use sequence length 128, memory length 128, a 262{,}144-token optimizer batch, sandwich RMSNorm, and a persistent K/V cache shared across depth. The large panel remains interim while its hollow configurations finish.
+}
+\clearpage
+
+\setcounter{table}{9}
+\captionof{table}{
+Four-H100 median steady-state decode latency in milliseconds.
+GPT-16 uses cached autoregressive decoding with a full sliding-window key-value cache; PRE uses segment-local recurrent decoding with depth-shared recurrent key-value memory. \(B\) is the global batch and \(B/4\) is the per-GPU batch.
+}
+\begin{center}
+\scriptsize
+\begin{tabular}{lcc}
+  \toprule
+  Model & \(C=128,B=16\) & \(C=2048,B=16\) \\
+  \midrule
+  GPT-16 & 0.636 & 0.760 \\
+  PRE \(D=1,E=16\) & 0.133 & 0.209 \\
+  PRE \(D=2,E=8\) & 0.498 & 0.645 \\
+  PRE \(D=4,E=4\) & 0.694 & 0.943 \\
+  PRE \(D=8,E=2\) & 0.943 & 1.447 \\
+  PRE \(D=16,E=1\) & 1.465 & 2.454 \\
+  \bottomrule
+\end{tabular}
+\end{center}
+\clearpage
+
+\setcounter{table}{10}
+\captionof{table}{
+Four-H100 FineWeb training throughput in tokens/s.
+Each panel fixes token batch \(C B\) and reports segment length \(C\) and global sequence batch \(B\). Values are medians over steps 2--5; startup, compilation, and autotuning steps 0--1 are excluded. OOM denotes measured memory exhaustion. All displayed values use one microbatch per optimizer update.
+}
+\begin{center}
+\scriptsize
+\setlength{\tabcolsep}{3.2pt}
+\begin{tabular}{lcccccc}
+  \toprule
+  \multicolumn{7}{c}{131k effective tokens per optimizer update} \\
+  \cmidrule(lr){1-7}
+  Model & \shortstack{\(C=32\)\\\(B=4{,}096\)} & \shortstack{\(C=64\)\\\(B=2{,}048\)} & \shortstack{\(C=128\)\\\(B=1{,}024\)} & \shortstack{\(C=256\)\\\(B=512\)} & \shortstack{\(C=1024\)\\\(B=128\)} & \shortstack{\(C=2048\)\\\(B=64\)} \\
+  \midrule
+  GPT-16 & 1{,}004.7k & 1{,}056.6k & 1{,}098.2k & 1{,}113.8k & 1{,}066.1k & 1{,}021.9k \\
+  PRE \(D=1,E=16\) & 471.3k & 417.4k & 327.2k & 218.7k & 67.0k & OOM \\
+  PRE \(D=2,E=8\) & 229.8k & 182.0k & 128.1k & 79.2k & 22.0k & OOM \\
+  PRE \(D=4,E=4\) & 169.0k & 134.6k & 96.7k & 60.6k & 17.1k & OOM \\
+  PRE \(D=8,E=2\) & 113.8k & 88.5k & 63.2k & 39.4k & 11.7k & OOM \\
+  PRE \(D=16,E=1\) & 68.7k & 54.1k & 37.7k & 24.3k & 7.5k & OOM \\
+  \bottomrule
+\end{tabular}
+
+\vspace{0.7em}
+
+\begin{tabular}{lcccccc}
+  \toprule
+  \multicolumn{7}{c}{262k effective tokens per optimizer update} \\
+  \cmidrule(lr){1-7}
+  Model & \shortstack{\(C=32\)\\\(B=8{,}192\)} & \shortstack{\(C=64\)\\\(B=4{,}096\)} & \shortstack{\(C=128\)\\\(B=2{,}048\)} & \shortstack{\(C=256\)\\\(B=1{,}024\)} & \shortstack{\(C=1024\)\\\(B=256\)} & \shortstack{\(C=2048\)\\\(B=128\)} \\
+  \midrule
+  GPT-16 & 1{,}115.5k & 1{,}205.6k & 1{,}238.8k & 1{,}245.7k & 1{,}168.6k & 1{,}125.4k \\
+  PRE \(D=1,E=16\) & 511.1k & 486.0k & 419.3k & 319.4k & OOM & OOM \\
+  PRE \(D=2,E=8\) & 263.7k & 228.7k & 179.4k & 121.7k & OOM & OOM \\
+  PRE \(D=4,E=4\) & 193.9k & 166.6k & 131.0k & 90.0k & OOM & OOM \\
+  PRE \(D=8,E=2\) & 128.9k & 110.2k & 84.8k & 57.9k & OOM & OOM \\
+  PRE \(D=16,E=1\) & 77.9k & 66.3k & 50.5k & 34.1k & OOM & OOM \\
+  \bottomrule
+\end{tabular}
+
+\vspace{0.7em}
+
+\begin{tabular}{lcccccc}
+  \toprule
+  \multicolumn{7}{c}{524k effective tokens per optimizer update} \\
+  \cmidrule(lr){1-7}
+  Model & \shortstack{\(C=32\)\\\(B=16{,}384\)} & \shortstack{\(C=64\)\\\(B=8{,}192\)} & \shortstack{\(C=128\)\\\(B=4{,}096\)} & \shortstack{\(C=256\)\\\(B=2{,}048\)} & \shortstack{\(C=1024\)\\\(B=512\)} & \shortstack{\(C=2048\)\\\(B=256\)} \\
+  \midrule
+  PRE \(D=1,E=16\) & 543.6k & 517.3k & 477.9k & 377.4k & OOM & OOM \\
+  PRE \(D=2,E=8\) & 285.2k & 260.2k & 219.6k & 157.1k & OOM & OOM \\
+  PRE \(D=4,E=4\) & 208.2k & 188.9k & 158.9k & 112.0k & OOM & OOM \\
+  PRE \(D=8,E=2\) & 137.6k & 124.0k & 103.8k & OOM & OOM & OOM \\
+  PRE \(D=16,E=1\) & 83.7k & 74.4k & 60.4k & OOM & OOM & OOM \\
+  \bottomrule
+\end{tabular}
+\end{center}
+
+\end{document}
