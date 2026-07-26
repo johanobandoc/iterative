@@ -17,10 +17,11 @@
   labelfont=bf,
   hypcap=false,
   justification=raggedright,
-  singlelinecheck=false
+  singlelinecheck=false,
+  skip=3pt
 }
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0.4em}
+\setlength{\parskip}{0.2em}
 \setlength{\LTcapwidth}{0.96\textwidth}
 \renewcommand{\arraystretch}{1.08}
 
@@ -33,18 +34,18 @@
 
 \setcounter{figure}{1}
 \begin{center}
-  \includegraphics[width=0.98\textwidth]{recurrent_state_sokoban_fineweb.pdf}
+  \includegraphics[width=0.93\textwidth]{recurrent_state_sokoban_fineweb.pdf}
 \end{center}
 \captionof{figure}{
 \textbf{Carried state supplies a serial computation axis.}
 \textbf{Left}: In Sokoban, solid lines carry hidden state across environment steps and dashed lines reset it every step. Resetting state severely hurts shallow updates, while extra within-step depth partially recovers performance; color denotes within-step depth \(L\).
 \textbf{Right}: In FineWeb next-token prediction, the PRE Recurrent Transformer carries latent recurrent state across token steps, while the PRE Transformer recreates latent state from the current segment at each step. The context window size is \(128\) for both architectures.
 }
-\clearpage
+\vspace{0.7em}
 
 \setcounter{figure}{3}
 \begin{center}
-  \includegraphics[width=0.98\textwidth]{fixed_compute_allocation_combined_toplegend.pdf}
+  \includegraphics[width=0.93\textwidth]{fixed_compute_allocation_combined_toplegend.pdf}
 \end{center}
 \captionof{figure}{
 \textbf{Fixed-compute allocation across domains.}
@@ -54,14 +55,14 @@ The horizontal axis varies expert hidden dimension, the vertical axis varies exp
 
 \setcounter{figure}{4}
 \begin{center}
-  \includegraphics[width=0.92\textwidth]{fixed_compute_retained_improvement.pdf}
+  \includegraphics[width=0.88\textwidth]{fixed_compute_retained_improvement.pdf}
 \end{center}
 \captionof{figure}{
 \textbf{Retained improvement under different depth caps.}
 Each bar reports the retained-improvement ratio \(\rho_{\leq k}\) for one matched-budget sweep under depth caps \(k \in \{1,2,4,8\}\), with \(Q\) defined as episodic return for Sokoban and Craftax and negative validation cross-entropy for FineWeb.
 Horizontal reference lines mark \(\rho=1.00\), which matches the unrestricted best configuration, and \(\rho=0.90\), which retains \(90\%\) of the best improvement over the domain reference.
 }
-\clearpage
+\vspace{0.7em}
 
 \setcounter{table}{0}
 \captionof{table}{
@@ -90,7 +91,7 @@ Sokoban and Craftax report episodic return, where higher is better. FineWeb next
 
 \setcounter{figure}{8}
 \begin{center}
-  \includegraphics[width=0.78\textwidth]{appendix_fixed_compute_budgets_equal_panels.pdf}
+  \includegraphics[width=0.62\textwidth]{appendix_fixed_compute_budgets_equal_panels.pdf}
 \end{center}
 \captionof{figure}{
 Additional fixed-compute allocation budgets.
@@ -101,7 +102,7 @@ Additional fixed-compute allocation budgets.
 \textbf{Bottom}: FineWeb small budget.
 In Sokoban and Craftax, panels vary expert hidden dimension, experts per within-step depth level, and within-step depth; color shows mean return, and only completed or near-completed configurations are shown. In FineWeb, color shows validation loss at the common comparison point of 1.30B consumed tokens, where lower is better.
 }
-\clearpage
+\vspace{0.5em}
 
 \setcounter{table}{1}
 \captionof{table}{
@@ -149,7 +150,7 @@ For each depth, the configuration with the best observed mean higher-is-better s
   \bottomrule
 \end{tabular}
 \end{center}
-\clearpage
+\vspace{0.5em}
 
 \setcounter{table}{3}
 \captionof{table}{
@@ -172,7 +173,7 @@ For each depth, the configuration with the best observed mean higher-is-better s
   \bottomrule
 \end{tabular}
 \end{center}
-\clearpage
+\vspace{0.5em}
 
 \setcounter{table}{4}
 \captionof{table}{
@@ -206,7 +207,7 @@ For each small and medium budget, the \(L=2\) configuration with the best observ
 
 \setcounter{figure}{11}
 \begin{center}
-  \includegraphics[width=0.98\textwidth]{language_model_recmoe_vs_gptmoe_budget16_2048.pdf}
+  \includegraphics[width=0.88\textwidth]{language_model_recmoe_vs_gptmoe_budget16_2048.pdf}
 \end{center}
 \captionof{figure}{
 FineWeb budget-16 comparison at long context.
@@ -214,11 +215,11 @@ FineWeb budget-16 comparison at long context.
 \textbf{Right}: the corresponding non-recurrent GPT-style PRE Transformer fixed-budget sweep with training segment length 2048.
 Color and point labels show validation loss at the latest common logged validation point within each panel, where lower is better; marker shape denotes within-step depth \(L\), and stars mark the best configurations within each panel. The PRE Recurrent Transformer panel contains the subset of memory-2048 configurations that completed with finite validation loss, while the GPT-style PRE Transformer panel contains the completed segment-2048 sweep.
 }
-\clearpage
+\vspace{0.7em}
 
 \setcounter{figure}{12}
 \begin{center}
-  \includegraphics[width=0.98\textwidth]{language_model_recmoe_vs_gptmoe_budget16_128.pdf}
+  \includegraphics[width=0.88\textwidth]{language_model_recmoe_vs_gptmoe_budget16_128.pdf}
 \end{center}
 \captionof{figure}{
 FineWeb budget-16 comparison at context length 128.
@@ -229,7 +230,7 @@ Color and point labels show validation loss at the latest common logged validati
 \clearpage
 
 \begin{center}
-  \includegraphics[width=0.98\textwidth]{fineweb_small_medium_large_budget_sandwich_depthshared.pdf}
+  \includegraphics[width=0.90\textwidth]{fineweb_small_medium_large_budget_sandwich_depthshared.pdf}
 \end{center}
 \captionof*{figure}{
 \textbf{Async-paper Figure 2. FineWeb fixed-recurrent-compute allocation across three budgets.}
@@ -239,7 +240,7 @@ Color and point labels show validation loss at the latest common logged validati
 All panels share one validation-loss color scale. Colored points and labels report the final validation checkpoint near 1.295B consumed tokens; all but one use W\&B step 4{,}940, while the lower-PDB \(D=1,E=2,W=6144\) run uses its nearest checkpoint at step 4{,}953. Hollow points mark planned configurations that had not completed when this snapshot was generated.
 Circles, squares, triangles, filled-plus markers, and crosses denote \(D=1,2,4,8,16\), respectively; a star marks the best completed configuration in each panel. Lower loss is better. All runs use sequence length 128, memory length 128, a 262{,}144-token optimizer batch, sandwich RMSNorm, and a persistent K/V cache shared across depth. The large panel remains interim while its hollow configurations finish.
 }
-\clearpage
+\vspace{0.7em}
 
 \setcounter{table}{9}
 \captionof{table}{
