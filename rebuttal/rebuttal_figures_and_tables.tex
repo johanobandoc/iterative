@@ -177,6 +177,30 @@ For each depth, the configuration with the best observed mean higher-is-better s
 
 \setcounter{table}{4}
 \captionof{table}{
+\textbf{Best \(L=4\) versus all \(L=2\) configurations in Sokoban.}
+For each small and medium budget, the \(L=4\) configuration with the best observed mean return is compared with every \(L=2\) configuration. Positive \(\Delta Q\) favors \(L=4\), and \(p\) is from the one-sided Welch test defined above. \(n_4/n_2\) gives the numbers of independent runs for the \(L=4\) and \(L=2\) configurations.
+}
+\begin{center}
+\small
+\setlength{\tabcolsep}{5.0pt}
+\begin{tabular}{@{}lllrrr@{}}
+  \toprule
+  Budget & Best \(L=4\) & \(L=2\) configuration & \(\Delta Q\) & \(n_4/n_2\) & \(p\) \\
+  \midrule
+  small & \(E=1,d=64\) & \(E=2,d=64\) & 0.113 & 9/9 & 0.0150 \\
+  small & \(E=1,d=64\) & \(E=6,d=32\) & 0.468 & 9/9 & \(<0.0001\) \\
+  small & \(E=1,d=64\) & \(E=18,d=16\) & 0.658 & 9/9 & \(<0.0001\) \\
+  medium & \(E=1,d=128\) & \(E=2,d=128\) & 0.099 & 9/9 & 0.0060 \\
+  medium & \(E=1,d=128\) & \(E=7,d=64\) & 0.151 & 9/9 & \(<0.0001\) \\
+  medium & \(E=1,d=128\) & \(E=23,d=32\) & 0.375 & 9/9 & \(<0.0001\) \\
+  medium & \(E=1,d=128\) & \(E=68,d=16\) & 0.730 & 9/9 & \(<0.0001\) \\
+  \bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.5em}
+
+\setcounter{table}{5}
+\captionof{table}{
 \textbf{Best \(L=2\) versus all \(L=1\) configurations in Sokoban.}
 For each small and medium budget, the \(L=2\) configuration with the best observed mean return is compared with every \(L=1\) configuration. Positive \(\Delta Q\) favors \(L=2\), and \(p\) is from the one-sided Welch test defined above. \(n_2/n_1\) gives the numbers of independent runs for the \(L=2\) and \(L=1\) configurations.
 }
@@ -207,7 +231,7 @@ that anchor ended below the established \(94.2\%\) training-progress cutoff
 and are excluded. Large-budget Sokoban and Craftax use the available three
 runs.
 
-\setcounter{table}{5}
+\setcounter{table}{6}
 \input{tables/fixed_compute_seed_tables}
 \clearpage
 
