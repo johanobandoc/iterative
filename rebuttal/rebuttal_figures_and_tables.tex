@@ -339,11 +339,12 @@ Each panel fixes token batch \(C B\) and reports segment length \(C\) and global
 \end{center}
 
 \clearpage
+\setcounter{figure}{13}
 \begin{center}
   \includegraphics[width=0.90\textwidth]{fineweb_small_medium_large_budget_sandwich_depthshared.pdf}
 \end{center}
-\captionof*{figure}{
-\textbf{Async-paper Figure 2. FineWeb fixed-recurrent-compute allocation across three budgets.}
+\captionof{figure}{
+\textbf{FineWeb fixed-recurrent-compute allocation across three budgets.}
 Relative to the default PRE Recurrent Transformer in the main paper, these runs replace per-expert output RMSNorm with sandwich RMSNorm after the residual branch and replace the depth-local recurrent K/V caches with one persistent K/V cache shared across within-step depth and written only after the final depth stage.
 }
 
