@@ -212,7 +212,7 @@ For each small and medium budget, the \(L=2\) configuration with the best observ
   Budget & Best \(L=2\) & \(L=1\) configuration & \(\Delta Q\) & \(n_2/n_1\) & \(p\) \\
   \midrule
   small & \(E=2,d=64\) & \(E=4,d=64\) & 0.265 & 9/9 & \(<0.0001\) \\
-  small & \(E=2,d=64\) & \(E=1,d=128\) & 0.481 & 9/7 & 0.0002 \\
+  small & \(E=2,d=64\) & \(E=1,d=128\) & 0.456 & 9/9 & \(<0.0001\) \\
   small & \(E=2,d=64\) & \(E=12,d=32\) & 0.624 & 9/9 & \(<0.0001\) \\
   small & \(E=2,d=64\) & \(E=36,d=16\) & 0.688 & 9/9 & \(<0.0001\) \\
   medium & \(E=2,d=128\) & \(E=4,d=128\) & 0.180 & 9/9 & \(<0.0001\) \\
@@ -225,11 +225,11 @@ For each small and medium budget, the \(L=2\) configuration with the best observ
 \end{center}
 \clearpage
 
-The Sokoban small- and medium-budget rows contain nine runs, except for the
-small-budget \(L=1,E=1,d=128\) anchor, which contains seven. Seeds 7 and 9 for
-that anchor ended below the established \(94.2\%\) training-progress cutoff
-and are excluded. Large-budget Sokoban and Craftax use the available three
-runs.
+The Sokoban small- and medium-budget rows contain nine runs. Seeds 7 and 9 for
+the small-budget \(L=1,E=1,d=128\) anchor finished at \(92.9\%\) and \(92.2\%\)
+of the nominal training steps, respectively; both are included using the same
+final-five-return summary as the other runs. Large-budget Sokoban and Craftax
+use the available three runs.
 
 \setcounter{table}{6}
 \input{tables/fixed_compute_seed_tables}
