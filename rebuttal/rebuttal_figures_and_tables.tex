@@ -259,19 +259,6 @@ Color and point labels show validation loss at the latest common logged validati
 }
 \clearpage
 
-\begin{center}
-  \includegraphics[width=0.90\textwidth]{fineweb_small_medium_large_budget_sandwich_depthshared.pdf}
-\end{center}
-\captionof*{figure}{
-\textbf{Async-paper Figure 2. FineWeb fixed-recurrent-compute allocation across three budgets.}
-\textbf{Left:} small budget, with all 14 configurations complete.
-\textbf{Middle:} medium budget, twice the small-sweep recurrent compute, with all 16 configurations complete.
-\textbf{Right:} large budget, eight times the small-sweep recurrent compute, with 24 of 30 configurations complete, including completed low-expert and depth-16 extensions.
-All panels share one validation-loss color scale. Colored points and labels report the final validation checkpoint near 1.295B consumed tokens; all but one use W\&B step 4{,}940, while the lower-PDB \(D=1,E=2,W=6144\) run uses its nearest checkpoint at step 4{,}953. Hollow points mark planned configurations that had not completed when this snapshot was generated.
-Circles, squares, triangles, filled-plus markers, and crosses denote \(D=1,2,4,8,16\), respectively; a star marks the best completed configuration in each panel. Lower loss is better. All runs use sequence length 128, memory length 128, a 262{,}144-token optimizer batch, sandwich RMSNorm, and a persistent K/V cache shared across depth. The large panel remains interim while its hollow configurations finish.
-}
-\vspace{0.7em}
-
 \setcounter{table}{9}
 \captionof{table}{
 Four-H100 median steady-state decode latency in milliseconds.
@@ -350,5 +337,14 @@ Each panel fixes token batch \(C B\) and reports segment length \(C\) and global
   \bottomrule
 \end{tabular}
 \end{center}
+
+\clearpage
+\begin{center}
+  \includegraphics[width=0.90\textwidth]{fineweb_small_medium_large_budget_sandwich_depthshared.pdf}
+\end{center}
+\captionof*{figure}{
+\textbf{Async-paper Figure 2. FineWeb fixed-recurrent-compute allocation across three budgets.}
+Relative to the default PRE Recurrent Transformer in the main paper, these runs replace per-expert output RMSNorm with sandwich RMSNorm after the residual branch and replace the depth-local recurrent K/V caches with one persistent K/V cache shared across within-step depth and written only after the final depth stage.
+}
 
 \end{document}
