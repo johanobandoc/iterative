@@ -132,21 +132,21 @@ Relative work is normalized to the smallest budget within each domain. For Sokob
 \setcounter{table}{2}
 \captionof{table}{
 \textbf{Best exact-depth comparison, \(L=4\) versus \(L=2\).}
-For each depth, the configuration with the best observed mean higher-is-better score \(Q\) is selected. \(\Delta Q\) is the observed difference between sample means \(\bar Q_4-\bar Q_2\), so positive values favor \(L=4\). The \(p\)-value is from Welch's \(t\)-test of \(H_0:\mathbb{E}[Q_4]\leq\mathbb{E}[Q_2]\) against \(H_1:\mathbb{E}[Q_4]>\mathbb{E}[Q_2]\). \(n_4/n_2\) gives the numbers of independent runs for the two configurations.
+For each depth, the configuration with the best observed mean higher-is-better score \(Q\) is selected. \(\Delta Q\) is the observed difference between sample means \(\bar Q_4-\bar Q_2\), so positive values favor \(L=4\). The \(p\)-value is from Welch's \(t\)-test of \(H_0:\mathbb{E}[Q_4]\leq\mathbb{E}[Q_2]\) against \(H_1:\mathbb{E}[Q_4]>\mathbb{E}[Q_2]\). \(n\) gives the number of independent runs per configuration.
 }
 \begin{center}
 \small
 \setlength{\tabcolsep}{4.0pt}
 \begin{tabular}{@{}llllrrr@{}}
   \toprule
-  Domain & Budget & Best \(L=4\) & Best \(L=2\) & \(\Delta Q\) & \(n_4/n_2\) & \(p\) \\
+  Domain & Budget & Best \(L=4\) & Best \(L=2\) & \(\Delta Q\) & \(n\) & \(p\) \\
   \midrule
-  Sokoban & small & \(E=1,d=64\) & \(E=2,d=64\) & 0.113 & 9/9 & 0.0150 \\
-  Sokoban & medium & \(E=1,d=128\) & \(E=2,d=128\) & 0.099 & 9/9 & 0.0060 \\
-  Sokoban & large & \(E=14,d=128\) & \(E=2,d=512\) & 0.074 & 3/3 & 0.1005 \\
-  Craftax & small & \(E=4,d=16\) & \(E=3,d=32\) & 0.063 & 3/3 & 0.4407 \\
-  Craftax & medium & \(E=2,d=64\) & \(E=4,d=64\) & -0.690 & 3/3 & 0.9275 \\
-  Craftax & large & \(E=24,d=64\) & \(E=48,d=64\) & -0.266 & 3/3 & 0.8364 \\
+  Sokoban & small & \(E=1,d=64\) & \(E=2,d=64\) & 0.113 & 9 & 0.0150 \\
+  Sokoban & medium & \(E=1,d=128\) & \(E=2,d=128\) & 0.099 & 9 & 0.0060 \\
+  Sokoban & large & \(E=14,d=128\) & \(E=2,d=512\) & 0.074 & 3 & 0.1005 \\
+  Craftax & small & \(E=4,d=16\) & \(E=3,d=32\) & 0.063 & 3 & 0.4407 \\
+  Craftax & medium & \(E=2,d=64\) & \(E=4,d=64\) & -0.690 & 3 & 0.9275 \\
+  Craftax & large & \(E=24,d=64\) & \(E=48,d=64\) & -0.266 & 3 & 0.8364 \\
   \bottomrule
 \end{tabular}
 \end{center}
@@ -155,21 +155,21 @@ For each depth, the configuration with the best observed mean higher-is-better s
 \setcounter{table}{3}
 \captionof{table}{
 \textbf{Best exact-depth comparison, \(L=2\) versus \(L=1\).}
-For each depth, the configuration with the best observed mean higher-is-better score \(Q\) is selected. \(\Delta Q\) is the observed difference between sample means \(\bar Q_2-\bar Q_1\), so positive values favor \(L=2\). The \(p\)-value is from Welch's \(t\)-test of \(H_0:\mathbb{E}[Q_2]\leq\mathbb{E}[Q_1]\) against \(H_1:\mathbb{E}[Q_2]>\mathbb{E}[Q_1]\). \(n_2/n_1\) gives the numbers of independent runs for the two configurations.
+For each depth, the configuration with the best observed mean higher-is-better score \(Q\) is selected. \(\Delta Q\) is the observed difference between sample means \(\bar Q_2-\bar Q_1\), so positive values favor \(L=2\). The \(p\)-value is from Welch's \(t\)-test of \(H_0:\mathbb{E}[Q_2]\leq\mathbb{E}[Q_1]\) against \(H_1:\mathbb{E}[Q_2]>\mathbb{E}[Q_1]\). \(n\) gives the number of independent runs per configuration.
 }
 \begin{center}
 \small
 \setlength{\tabcolsep}{4.0pt}
 \begin{tabular}{@{}llllrrr@{}}
   \toprule
-  Domain & Budget & Best \(L=2\) & Best \(L=1\) & \(\Delta Q\) & \(n_2/n_1\) & \(p\) \\
+  Domain & Budget & Best \(L=2\) & Best \(L=1\) & \(\Delta Q\) & \(n\) & \(p\) \\
   \midrule
-  Sokoban & small & \(E=2,d=64\) & \(E=4,d=64\) & 0.265 & 9/9 & \(<0.0001\) \\
-  Sokoban & medium & \(E=2,d=128\) & \(E=4,d=128\) & 0.180 & 9/9 & \(<0.0001\) \\
-  Sokoban & large & \(E=2,d=512\) & \(E=15,d=256\) & 0.086 & 3/3 & 0.0745 \\
-  Craftax & small & \(E=3,d=32\) & \(E=3,d=64\) & -0.670 & 3/3 & 0.8968 \\
-  Craftax & medium & \(E=4,d=64\) & \(E=8,d=64\) & 0.132 & 3/3 & 0.3551 \\
-  Craftax & large & \(E=48,d=64\) & \(E=96,d=64\) & 0.021 & 3/3 & 0.4545 \\
+  Sokoban & small & \(E=2,d=64\) & \(E=4,d=64\) & 0.265 & 9 & \(<0.0001\) \\
+  Sokoban & medium & \(E=2,d=128\) & \(E=4,d=128\) & 0.180 & 9 & \(<0.0001\) \\
+  Sokoban & large & \(E=2,d=512\) & \(E=15,d=256\) & 0.086 & 3 & 0.0745 \\
+  Craftax & small & \(E=3,d=32\) & \(E=3,d=64\) & -0.670 & 3 & 0.8968 \\
+  Craftax & medium & \(E=4,d=64\) & \(E=8,d=64\) & 0.132 & 3 & 0.3551 \\
+  Craftax & large & \(E=48,d=64\) & \(E=96,d=64\) & 0.021 & 3 & 0.4545 \\
   \bottomrule
 \end{tabular}
 \end{center}
@@ -178,22 +178,22 @@ For each depth, the configuration with the best observed mean higher-is-better s
 \setcounter{table}{4}
 \captionof{table}{
 \textbf{Best \(L=4\) versus all \(L=2\) configurations in Sokoban.}
-For each small and medium budget, the \(L=4\) configuration with the best observed mean return is compared with every \(L=2\) configuration. Positive \(\Delta Q\) favors \(L=4\), and \(p\) is from the one-sided Welch test defined above. \(n_4/n_2\) gives the numbers of independent runs for the \(L=4\) and \(L=2\) configurations.
+For each small and medium budget, the \(L=4\) configuration with the best observed mean return is compared with every \(L=2\) configuration. Positive \(\Delta Q\) favors \(L=4\), and \(p\) is from the one-sided Welch test defined above. \(n\) gives the number of independent runs per configuration.
 }
 \begin{center}
 \small
 \setlength{\tabcolsep}{5.0pt}
 \begin{tabular}{@{}lllrrr@{}}
   \toprule
-  Budget & Best \(L=4\) & \(L=2\) configuration & \(\Delta Q\) & \(n_4/n_2\) & \(p\) \\
+  Budget & Best \(L=4\) & \(L=2\) configuration & \(\Delta Q\) & \(n\) & \(p\) \\
   \midrule
-  small & \(E=1,d=64\) & \(E=2,d=64\) & 0.113 & 9/9 & 0.0150 \\
-  small & \(E=1,d=64\) & \(E=6,d=32\) & 0.468 & 9/9 & \(<0.0001\) \\
-  small & \(E=1,d=64\) & \(E=18,d=16\) & 0.658 & 9/9 & \(<0.0001\) \\
-  medium & \(E=1,d=128\) & \(E=2,d=128\) & 0.099 & 9/9 & 0.0060 \\
-  medium & \(E=1,d=128\) & \(E=7,d=64\) & 0.151 & 9/9 & \(<0.0001\) \\
-  medium & \(E=1,d=128\) & \(E=23,d=32\) & 0.375 & 9/9 & \(<0.0001\) \\
-  medium & \(E=1,d=128\) & \(E=68,d=16\) & 0.730 & 9/9 & \(<0.0001\) \\
+  small & \(E=1,d=64\) & \(E=2,d=64\) & 0.113 & 9 & 0.0150 \\
+  small & \(E=1,d=64\) & \(E=6,d=32\) & 0.468 & 9 & \(<0.0001\) \\
+  small & \(E=1,d=64\) & \(E=18,d=16\) & 0.658 & 9 & \(<0.0001\) \\
+  medium & \(E=1,d=128\) & \(E=2,d=128\) & 0.099 & 9 & 0.0060 \\
+  medium & \(E=1,d=128\) & \(E=7,d=64\) & 0.151 & 9 & \(<0.0001\) \\
+  medium & \(E=1,d=128\) & \(E=23,d=32\) & 0.375 & 9 & \(<0.0001\) \\
+  medium & \(E=1,d=128\) & \(E=68,d=16\) & 0.730 & 9 & \(<0.0001\) \\
   \bottomrule
 \end{tabular}
 \end{center}
@@ -202,24 +202,24 @@ For each small and medium budget, the \(L=4\) configuration with the best observ
 \setcounter{table}{5}
 \captionof{table}{
 \textbf{Best \(L=2\) versus all \(L=1\) configurations in Sokoban.}
-For each small and medium budget, the \(L=2\) configuration with the best observed mean return is compared with every \(L=1\) configuration. Positive \(\Delta Q\) favors \(L=2\), and \(p\) is from the one-sided Welch test defined above. \(n_2/n_1\) gives the numbers of independent runs for the \(L=2\) and \(L=1\) configurations.
+For each small and medium budget, the \(L=2\) configuration with the best observed mean return is compared with every \(L=1\) configuration. Positive \(\Delta Q\) favors \(L=2\), and \(p\) is from the one-sided Welch test defined above. \(n\) gives the number of independent runs per configuration.
 }
 \begin{center}
 \small
 \setlength{\tabcolsep}{5.0pt}
 \begin{tabular}{@{}lllrrr@{}}
   \toprule
-  Budget & Best \(L=2\) & \(L=1\) configuration & \(\Delta Q\) & \(n_2/n_1\) & \(p\) \\
+  Budget & Best \(L=2\) & \(L=1\) configuration & \(\Delta Q\) & \(n\) & \(p\) \\
   \midrule
-  small & \(E=2,d=64\) & \(E=4,d=64\) & 0.265 & 9/9 & \(<0.0001\) \\
-  small & \(E=2,d=64\) & \(E=1,d=128\) & 0.456 & 9/9 & \(<0.0001\) \\
-  small & \(E=2,d=64\) & \(E=12,d=32\) & 0.624 & 9/9 & \(<0.0001\) \\
-  small & \(E=2,d=64\) & \(E=36,d=16\) & 0.688 & 9/9 & \(<0.0001\) \\
-  medium & \(E=2,d=128\) & \(E=4,d=128\) & 0.180 & 9/9 & \(<0.0001\) \\
-  medium & \(E=2,d=128\) & \(E=1,d=256\) & 0.231 & 9/9 & \(<0.0001\) \\
-  medium & \(E=2,d=128\) & \(E=14,d=64\) & 0.277 & 9/9 & \(<0.0001\) \\
-  medium & \(E=2,d=128\) & \(E=45,d=32\) & 0.534 & 9/9 & \(<0.0001\) \\
-  medium & \(E=2,d=128\) & \(E=136,d=16\) & 0.881 & 9/9 & \(<0.0001\) \\
+  small & \(E=2,d=64\) & \(E=4,d=64\) & 0.265 & 9 & \(<0.0001\) \\
+  small & \(E=2,d=64\) & \(E=1,d=128\) & 0.456 & 9 & \(<0.0001\) \\
+  small & \(E=2,d=64\) & \(E=12,d=32\) & 0.624 & 9 & \(<0.0001\) \\
+  small & \(E=2,d=64\) & \(E=36,d=16\) & 0.688 & 9 & \(<0.0001\) \\
+  medium & \(E=2,d=128\) & \(E=4,d=128\) & 0.180 & 9 & \(<0.0001\) \\
+  medium & \(E=2,d=128\) & \(E=1,d=256\) & 0.231 & 9 & \(<0.0001\) \\
+  medium & \(E=2,d=128\) & \(E=14,d=64\) & 0.277 & 9 & \(<0.0001\) \\
+  medium & \(E=2,d=128\) & \(E=45,d=32\) & 0.534 & 9 & \(<0.0001\) \\
+  medium & \(E=2,d=128\) & \(E=136,d=16\) & 0.881 & 9 & \(<0.0001\) \\
   \bottomrule
 \end{tabular}
 \end{center}
