@@ -95,8 +95,9 @@ large & 8 & 7 & 128 & 14.145 & 14.281 & 14.259 & 14.228 & 0.042 \\
 
 {\scriptsize
 \setlength{\tabcolsep}{1.2pt}
+\renewcommand{\thetable}{9a}
 \begin{longtable}{@{}lrrrrrrrrrrrrrr@{}}
-\caption{\textbf{Per-seed Craftax fixed-compute results.} These are all points shown for this benchmark in Figures 4 and 9. Each seed entry is the mean of the final five logged episodic returns. Mean and standard error are computed across the available seed values. Columns \(s_1,\ldots,s_9\) identify random seeds.}\label{tab:appendix-craftax-fixed-compute-seeds}\\
+\caption{\textbf{Per-seed Craftax small- and medium-budget fixed-compute results.} These are all points shown for this benchmark in Figures 4 and 9. Each seed entry is the mean of the final five logged episodic returns. Mean and standard error are computed across the available seed values. Columns \(s_1,\ldots,s_9\) identify random seeds.}\label{tab:appendix-craftax-fixed-compute-seeds}\\
 \toprule
 Budget & \(L\) & \(E\) & \(d\) & \(s_1\) & \(s_2\) & \(s_3\) & \(s_4\) & \(s_5\) & \(s_6\) & \(s_7\) & \(s_8\) & \(s_9\) & Mean & SE \\
 \midrule
@@ -134,21 +135,43 @@ medium & 3 & 6 & 32 & 33.660 & 33.012 & 33.606 & 33.805 & 33.864 & 33.875 & 32.5
 medium & 4 & 2 & 64 & 32.895 & 33.153 & 33.685 & 33.339 & 33.333 & 33.587 & 34.267 & 33.648 & 33.757 & 33.518 & 0.132 \\
 medium & 4 & 5 & 32 & 33.349 & 32.919 & 33.252 & 33.535 & 32.767 & 33.907 & 34.129 & 33.413 & 33.341 & 33.401 & 0.143 \\
 medium & 8 & 1 & 64 & 33.488 & 33.150 & 32.814 & 33.991 & 32.979 & 32.762 & 32.252 & 33.369 & 32.846 & 33.072 & 0.167 \\
-large & 1 & 1 & 1024 & 33.044 & 34.154 & 31.969 & -- & -- & -- & -- & -- & -- & 33.056 & 0.631 \\
-large & 1 & 4 & 512 & 33.405 & 34.443 & 34.306 & -- & -- & -- & -- & -- & -- & 34.051 & 0.326 \\
-large & 1 & 12 & 256 & 34.329 & 34.919 & 34.959 & -- & -- & -- & -- & -- & -- & 34.736 & 0.204 \\
-large & 1 & 36 & 128 & 35.190 & 35.049 & 35.172 & -- & -- & -- & -- & -- & -- & 35.137 & 0.044 \\
-large & 1 & 96 & 64 & 35.228 & 35.285 & 35.024 & -- & -- & -- & -- & -- & -- & 35.179 & 0.079 \\
-large & 2 & 2 & 512 & 34.128 & 34.553 & 33.895 & -- & -- & -- & -- & -- & -- & 34.192 & 0.193 \\
-large & 2 & 6 & 256 & 34.223 & 33.614 & 34.942 & -- & -- & -- & -- & -- & -- & 34.260 & 0.384 \\
-large & 2 & 18 & 128 & 34.646 & 34.683 & 35.735 & -- & -- & -- & -- & -- & -- & 35.021 & 0.357 \\
-large & 2 & 48 & 64 & 35.490 & 35.131 & 34.980 & -- & -- & -- & -- & -- & -- & 35.200 & 0.151 \\
-large & 3 & 4 & 256 & 33.728 & 34.438 & 34.156 & -- & -- & -- & -- & -- & -- & 34.107 & 0.206 \\
-large & 3 & 12 & 128 & 34.878 & 35.186 & 34.882 & -- & -- & -- & -- & -- & -- & 34.982 & 0.102 \\
-large & 3 & 32 & 64 & 34.726 & 35.700 & 34.995 & -- & -- & -- & -- & -- & -- & 35.140 & 0.291 \\
-large & 4 & 1 & 512 & 34.670 & 34.525 & 34.392 & -- & -- & -- & -- & -- & -- & 34.529 & 0.080 \\
-large & 4 & 3 & 256 & 34.273 & 34.422 & 34.738 & -- & -- & -- & -- & -- & -- & 34.477 & 0.137 \\
-large & 4 & 9 & 128 & 34.966 & 34.542 & 34.787 & -- & -- & -- & -- & -- & -- & 34.765 & 0.123 \\
-large & 4 & 24 & 64 & 35.020 & 34.583 & 35.199 & -- & -- & -- & -- & -- & -- & 34.934 & 0.183 \\
+\end{longtable}
+}
+
+{\scriptsize
+\setlength{\tabcolsep}{3.0pt}
+\renewcommand{\thetable}{9b}
+\begin{longtable}{@{}lrrrrrrrr@{}}
+\caption{\textbf{Per-seed Craftax large-budget fixed-compute results.} These are all points shown for this benchmark in Figures 4 and 9. Each seed entry is the mean of the final five logged episodic returns. Mean and standard error are computed across the available seed values. Columns \(s_1,\ldots,s_3\) identify random seeds.}\label{tab:appendix-craftax-large-fixed-compute-seeds}\\
+\toprule
+Budget & \(L\) & \(E\) & \(d\) & \(s_1\) & \(s_2\) & \(s_3\) & Mean & SE \\
+\midrule
+\endfirsthead
+\multicolumn{9}{c}{\tablename~\thetable\ (continued)} \\
+\toprule
+Budget & \(L\) & \(E\) & \(d\) & \(s_1\) & \(s_2\) & \(s_3\) & Mean & SE \\
+\midrule
+\endhead
+\midrule
+\multicolumn{9}{r}{Continued on next page} \\
+\endfoot
+\bottomrule
+\endlastfoot
+large & 1 & 1 & 1024 & 33.044 & 34.154 & 31.969 & 33.056 & 0.631 \\
+large & 1 & 4 & 512 & 33.405 & 34.443 & 34.306 & 34.051 & 0.326 \\
+large & 1 & 12 & 256 & 34.329 & 34.919 & 34.959 & 34.736 & 0.204 \\
+large & 1 & 36 & 128 & 35.190 & 35.049 & 35.172 & 35.137 & 0.044 \\
+large & 1 & 96 & 64 & 35.228 & 35.285 & 35.024 & 35.179 & 0.079 \\
+large & 2 & 2 & 512 & 34.128 & 34.553 & 33.895 & 34.192 & 0.193 \\
+large & 2 & 6 & 256 & 34.223 & 33.614 & 34.942 & 34.260 & 0.384 \\
+large & 2 & 18 & 128 & 34.646 & 34.683 & 35.735 & 35.021 & 0.357 \\
+large & 2 & 48 & 64 & 35.490 & 35.131 & 34.980 & 35.200 & 0.151 \\
+large & 3 & 4 & 256 & 33.728 & 34.438 & 34.156 & 34.107 & 0.206 \\
+large & 3 & 12 & 128 & 34.878 & 35.186 & 34.882 & 34.982 & 0.102 \\
+large & 3 & 32 & 64 & 34.726 & 35.700 & 34.995 & 35.140 & 0.291 \\
+large & 4 & 1 & 512 & 34.670 & 34.525 & 34.392 & 34.529 & 0.080 \\
+large & 4 & 3 & 256 & 34.273 & 34.422 & 34.738 & 34.477 & 0.137 \\
+large & 4 & 9 & 128 & 34.966 & 34.542 & 34.787 & 34.765 & 0.123 \\
+large & 4 & 24 & 64 & 35.020 & 34.583 & 35.199 & 34.934 & 0.183 \\
 \end{longtable}
 }
