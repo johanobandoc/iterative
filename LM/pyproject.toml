@@ -1,0 +1,90 @@
+[project]
+name = "nanogptjax"
+version = "0.1.0"
+description = "Building scalable LLMs in pure JAX"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "jax[cuda12]==0.8.1; sys_platform == 'linux'",
+    "jax==0.8.1; sys_platform != 'linux'",
+    "orbax-checkpoint==0.11.28",
+    "optax @ git+https://github.com/google-deepmind/optax.git@d015bc4f04469c5fff0cb68b6512176e4cf6db13",
+    "numpy==2.3.5",
+    "grain==0.2.18",
+    "wandb==0.30.0",
+]
+
+[project.optional-dependencies]
+data = [
+    "huggingface-hub==1.2.3",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8,<9",
+    "ruff>=0.14.10",
+]
+
+[tool.uv]
+package = false
+default-groups = []
+
+[tool.ruff]
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    "*.ipynb",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+    "notebooks",
+]
+
+# Same as Black.
+line-length = 88
+indent-width = 4
+
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
+ignore = []
+
+# Ignore `E402` (import violations) in all `__init__.py` files, and in selected subdirectories.
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["E402"]
+"**/nanogpt/*" = ["E402"]
+"**/recnanogpt/*" = ["E402"]
+
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = ["B"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+docstring-code-format = false
+docstring-code-line-length = "dynamic"

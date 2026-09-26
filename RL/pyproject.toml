@@ -1,0 +1,25 @@
+[project]
+name = "sokoban"
+version = "0.1.0"
+description = "JAX actor-critic agents for Sokoban."
+readme = "README.md"
+requires-python = ">=3.10,<3.12"
+dependencies = [
+    "flax>=0.10.2,<0.10.3",
+    "jax[cuda12]>=0.4.35,<0.5; sys_platform == 'linux' and platform_machine == 'x86_64'",
+    "jax>=0.4.35,<0.5; sys_platform != 'linux' or platform_machine != 'x86_64'",
+    "jumanji>=1.1.1,<2",
+    "numpy>=1.26,<3",
+    "optax>=0.2.3,<0.3",
+    "tensorboard>=2.15,<3",
+    "tensorboardx>=2.6,<3",
+    "tyro>=0.8,<1",
+    "wandb>=0.17,<1",
+]
+
+[tool.uv]
+package = false
+default-groups = []
+
+[dependency-groups]
+dev = ["pytest>=8,<9"]

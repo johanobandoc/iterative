@@ -1,0 +1,27 @@
+
+__pycache__/
+.venv/
+.idea
+.DS_Store
+
+
+out/
+
+# wandb
+wandb/
+
+#saved binaries
+checkpoints/
+
+videos/
+visuals/
+runs/
+.ipynb_checkpoints/
+
+#cmake
+CmakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+libtorch/
+*.o
